@@ -2,7 +2,7 @@
 /**
  * 后台首页控制器
  */
-Class IndexAction extends Action{
+Class IndexAction extends CommonAction{
 
 	//首页视图
 	public function index(){
