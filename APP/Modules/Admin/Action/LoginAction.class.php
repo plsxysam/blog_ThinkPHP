@@ -8,8 +8,8 @@ Class LoginAction extends Action{
 	}
 
 	public function verify(){
-		import('ORG.Util.Image');
-		Image::buildImageVerify();
+		import('Class.Image', APP_PATH);
+		Image::Verify();
 	}
 }
  ?>

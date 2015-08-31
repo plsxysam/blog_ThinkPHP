@@ -13,7 +13,7 @@
 	 
 	<script type="text/javascript" src="__PUBLIC__/js/bootstrapValidator.js"></script>
 
-	<script type="text/javascript">	var verifyURL='{:U("Admin/Login/verify",'','')}';</script>
+	<script type="text/javascript">	var verifyURL='{:U(GROUP_NAME."/Login/verify",'','')}';</script>
 	<script type="text/javascript" src="__PUBLIC__/js/login.js"></script>
 
 	
@@ -102,7 +102,7 @@
                             <input type = "code" name="code" class ="form-control" placeholder="请输入验证码">
                         </div>
                         <div class = "col-lg-3" >
-                            <img class= "control-label" style="float:left;" id="code" src="{:U('Admin/Login/verify')}">
+                            <img class= "control-label" style="float:left;" id="code" src="{:U(GROUP_NAME.'/Login/verify')}">
                             <h5 style="float:left;padding-top: 5px;margin-bottom: 0px;"><a href="javascript:void(change_code(this));">看不清</a></h5>
                         </div>
 					</div>
