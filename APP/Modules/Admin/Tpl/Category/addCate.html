@@ -85,44 +85,34 @@
 
       </div>
     </nav>
-    <!-- 使用 bootstrap的组件巨幕，让巨幕组件的宽度与浏览器宽度一致并且没有圆角 -->
-    <div class="jumbotron" style="background:url('__PUBLIC__/pic/jumbotron.jpg');background-size:cover;">
-      <div class="container" style="color:#fff;">
-        <h1>Welcome to freescale</h1>
-              <p>...</p>
-              <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-      </div>
-    </div>
 
  <div class="container">
-    <!-- 使用 bootstrap的组件巨幕 -->
     <div class="row">
-        <div class="jumbotron" style="background:url('__PUBLIC__/pic/jumbotron.jpg');background-size:cover;">
-            <h1 style="color:#fff;">Welcome</h1>
-            <h2>freescale</h2>
-            <p><br><br></p>
-          <!-- <img src="__PUBLIC__/pic/jumbotron.jpg"> -->
-        
+        <div class="col-lg-12">
+            <h2 style="color:#000;">添加栏目分类</h2>
         </div>
-    </div>
-
+    </div>    
     <div class="row">
-        <div class="col-lg-2">
-            <div class ="row"><b style="color:#000;">博文管理</b></div>
-            <div class ="row"><a href="">博文列表</a></div>
-            <div class ="row"><a href="">添加博文</a></div>
-
-            <div class ="row"><a href=""><b style="color:#000;">属性管理</b></div>
-            <div class ="row"><a href="">属性列表</a></div>
-            <div class ="row"><a href="">添加属性</a></div>
-
-            <div class ="row"><b style="color:#000;">分类管理</b></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Category/index')}">分类列表</a></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Category/addCate')}">添加分类</a></div>
-
-            <div class ="row"><b style="color:#000;">系统设置</b></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/System/verify')}">验证码设置</a></div>
-        </div>
+        <div class = ""></div>
+            <form class="navbar-form " method="post" action="{:U(GROUP_NAME.'/Category/runAddCate')}">
+                <div class="row">
+                    <label class="col-lg-2 control-label">分类栏目名称：</label>
+                    <input type="text" class="form-control col-lg-8" name='name'>  
+                </div> 
+                <div class="row">
+                    <label class="col-lg-2 control-label">排序：</label>
+                    <input type="text" class="form-control col-lg-8" name='sort' value='100' >  
+                </div>    
+                <!-- <div class="row">
+                    <label class="col-lg-2 control-label">pid：</label>
+                    <input type="text" class="form-control col-lg-8" name='VERIFY_HEIGHT' value='{$Think.config.verify_height}' >  
+                </div>  -->
+                <div class="row">
+                    <input type="hidden" name='pid' value ='0' />
+                    <button type="submit" class="btn btn-primary" style="width:80px;">提交</button>
+                </div>
+                
+            </form>
     </div>
 </div>
 
