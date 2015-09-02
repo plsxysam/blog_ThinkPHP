@@ -8,6 +8,7 @@ Class CategoryAction extends CommonAction {
 		//$this->assign('cate', $cate)->display();
 
 		import('Class.Category', APP_PATH);
+		// $cate = Category::unlimitedForLayer($cate);
 		$this->cate = Category::unlimitedForLevel($cate, '&nbsp;&nbsp;&nbsp;&nbsp;--');
 		$this->display();
 	}
