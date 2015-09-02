@@ -15,11 +15,25 @@
 
     <script type="text/javascript">
         window.UEDITOR_HOME_URL = '__ROOT__/Data/Ueditor/';
-        window.onload = function (){
-            window.UEDITOR_CONFIG.initialFrameWidth = 1000;
-            window.UEDITOR_CONFIG.initialFrameHeight = 500;
-            UE.getEditor('content');
+        window.onload = function(){
+        window.UEDITOR_CONFIG.initialFrameWidth = 1000; //编辑器宽
+        window.UEDITOR_CONFIG.initialFrameHeight = 400; //编辑器高
+        //window.UEDITOR_CONFIG.getActionUrl = "{:U(GROUP_NAME.'/Blog/upload')}"; //提交页面
+        // window.UEDITOR_CONFIG.imagePath = '__ROOT__/Uploads/';
+        
+
+        UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+        UE.Editor.prototype.getActionUrl = function(action){
+            if(action == 'uploadimage') {
+                return "{:U(GROUP_NAME.'/Blog/upload')}";
+            }else{
+                return this._bkGetActionUrl(action);
+            }
         }
+
+        UE.getEditor('content');
+        }
+
     </script>
     <script type="text/javascript" src="__ROOT__/Data/Ueditor/ueditor.config.js"></script>
     <script type="text/javascript" src="__ROOT__/Data/Ueditor/ueditor.all.min.js"></script>

@@ -23,5 +23,32 @@ Class BlogAction extends CommonAction{
 	Public function addBlog () {
 		p($_POST);
 	}
+
+	//编辑器图片上传处理
+	Public function upload(){
+		import('ORG.Net.UploadFile');
+		$upload = new UploadFile();
+		$upload->autoSub = true;
+		$upload->subType = 'date';
+		$upload->dateFormat = 'Ym';
+
+		if($upload->upload('./Uploads/')){
+			$info = $upload->getUploadFileInfo();
+			echo json_encode(array(
+				'url' => $info[0]['savename'],
+				'title' => htmlspecialchars($POST['pictitle'], ENT_QUOTES),
+				'original' => $info[0]['name'],
+				'state' => 'SUCCESS',
+				'imageUrlPrefix' =>'./Uploads/'
+				));
+		} else {
+			echo json_encode(array(
+				'state' =>$upload->getErrorMsg()
+				));
+			
+		}
+
+
+	}
 }
  ?>
