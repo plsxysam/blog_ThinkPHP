@@ -2,16 +2,16 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-	<title>index</title>
+    <title>index</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.css"/>
-	<link rel="stylesheet" href="__PUBLIC__/css/bootstrapValidator.min.css"/>
-	 
-	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
-	 
-	<script type="text/javascript" src="__PUBLIC__/js/bootstrapValidator.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrapValidator.min.css"/>
+     
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+     
+    <script type="text/javascript" src="__PUBLIC__/js/bootstrapValidator.js"></script>
 
     <style type="text/css">
         body{
@@ -50,6 +50,10 @@
         line-height: 55px;
         border-bottom: 1px solid #cccccc;
         }
+        .container .row{
+            height: 55px;
+            background-color: #fff;
+        }
     </style>
     <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -85,48 +89,29 @@
 
       </div>
     </nav>
-    <!-- 使用 bootstrap的组件巨幕，让巨幕组件的宽度与浏览器宽度一致并且没有圆角 -->
-    <div class="jumbotron" style="background:url('__PUBLIC__/pic/jumbotron.jpg');background-size:cover;">
-      <div class="container" style="color:#fff;">
-        <h1>Welcome to freescale</h1>
-              <p>...</p>
-              <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-      </div>
-    </div>
 
  <div class="container">
-    <!-- 使用 bootstrap的组件巨幕 -->
-    <div class="row">
-        <div class="jumbotron" style="background:url('__PUBLIC__/pic/jumbotron.jpg');background-size:cover;">
-            <h1 style="color:#fff;">Welcome</h1>
-            <h2>freescale</h2>
-            <p><br><br></p>
-          <!-- <img src="__PUBLIC__/pic/jumbotron.jpg"> -->
-        
+
+    <form action="{:U(GROUP_NAME . '/Category/sortCate')}" method="post">
+        <div class ="row" style="font-size:20px;"> 
+        <!--列-->
+            <div class="col-lg-2">ID</div>
+            <div class="col-lg-3">属性名称</div>
+            <div class="col-lg-2">标题颜色</div>
+            <div class="col-lg-3">操作</div>
         </div>
-    </div>
+        <foreach name = 'attr' item = 'v'>
+            <div class = "row">
+                <div class="col-lg-2">{$v.id}</div>
+                <div class="col-lg-3">{$v.name}</div>
+                <div class="col-lg-2"><div style ='width:50px;height:20px;background:{$v.color};'></div></div>
+                <div class="col-lg-3">[<a href="">修改</a>][<a href="">删除</a>]</div> 
+            </div>
+        </foreach>
+        <div class="row">
 
-    <div class="row">
-        <div class="col-lg-2">
-            <div class ="row"><b style="color:#000;">博文管理</b></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Blog/index')}">博文列表</a></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Blog/blog')}">添加博文</a></div>
-
-            <div class ="row"><a href=""><b style="color:#000;">属性管理</b></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Attribute/index')}">属性列表</a></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Attribute/addAttr')}">添加属性</a></div>
-
-            <div class ="row"><b style="color:#000;">分类管理</b></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Category/index')}">分类列表</a></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Category/addCate')}">添加分类</a></div>
-
-            <div class ="row"><b style="color:#000;">系统设置</b></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/System/verify')}">验证码设置</a></div>
+            <button type="submit" class="btn btn-primary" style="width:80px;">提交</button>
         </div>
-    </div>
-</div>
-
-
-
+    </form>
 </body>
 </html>

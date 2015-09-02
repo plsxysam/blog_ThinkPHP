@@ -17,11 +17,11 @@ Class Category{
 	}
 
 	//组合多维数组
-	Static Public function unlimitedForLayer($cate, $, $pid = 0){
+	Static Public function unlimitedForLayer($cate, $name='child', $pid = 0){
 		$arr = array();
 		foreach ($cate as $v) {
 			if($v['pid'] == $pid){
-				$v['child'] = self::unlimitedForLayer($cate, $v['pid']);
+				$v[$name] = self::unlimitedForLayer($cate, $name, $v['pid']);
 				$arr[] = $v;
 			}
 		}

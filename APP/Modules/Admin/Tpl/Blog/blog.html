@@ -2,16 +2,27 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-	<title>index</title>
+    <title>index</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.css"/>
-	<link rel="stylesheet" href="__PUBLIC__/css/bootstrapValidator.min.css"/>
-	 
-	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
-	 
-	<script type="text/javascript" src="__PUBLIC__/js/bootstrapValidator.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrapValidator.min.css"/>
+     
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+     
+    <script type="text/javascript" src="__PUBLIC__/js/bootstrapValidator.js"></script>
+
+    <script type="text/javascript">
+        window.UEDITOR_HOME_URL = '__ROOT__/Data/Ueditor/';
+        window.onload = function (){
+            window.UEDITOR_CONFIG.initialFrameWidth = 1000;
+            window.UEDITOR_CONFIG.initialFrameHeight = 500;
+            UE.getEditor('content');
+        }
+    </script>
+    <script type="text/javascript" src="__ROOT__/Data/Ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="__ROOT__/Data/Ueditor/ueditor.all.min.js"></script>
 
     <style type="text/css">
         body{
@@ -36,21 +47,6 @@
     </style>
 </head>
 <body>
-    <style type="text/css">
-        /*nav{
-            padding-right:6px;
-            padding-left:6px;
-            margin: 0 auto;
-        }*/
-        .col-lg-2 .row{height:55px;
-        background:#D9E0E0;
-        border-right: 1px solid #cccccc;
-        color: #ffffff;
-        text-align: center;
-        line-height: 55px;
-        border-bottom: 1px solid #cccccc;
-        }
-    </style>
     <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -85,44 +81,43 @@
 
       </div>
     </nav>
-    <!-- 使用 bootstrap的组件巨幕，让巨幕组件的宽度与浏览器宽度一致并且没有圆角 -->
-    <div class="jumbotron" style="background:url('__PUBLIC__/pic/jumbotron.jpg');background-size:cover;">
-      <div class="container" style="color:#fff;">
-        <h1>Welcome to freescale</h1>
-              <p>...</p>
-              <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-      </div>
-    </div>
 
  <div class="container">
-    <!-- 使用 bootstrap的组件巨幕 -->
     <div class="row">
-        <div class="jumbotron" style="background:url('__PUBLIC__/pic/jumbotron.jpg');background-size:cover;">
-            <h1 style="color:#fff;">Welcome</h1>
-            <h2>freescale</h2>
-            <p><br><br></p>
-          <!-- <img src="__PUBLIC__/pic/jumbotron.jpg"> -->
-        
+        <div class="col-lg-12">
+            <h2 style="color:#000;">博文发布</h2>
         </div>
-    </div>
-
+    </div>    
     <div class="row">
-        <div class="col-lg-2">
-            <div class ="row"><b style="color:#000;">博文管理</b></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Blog/index')}">博文列表</a></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Blog/blog')}">添加博文</a></div>
-
-            <div class ="row"><a href=""><b style="color:#000;">属性管理</b></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Attribute/index')}">属性列表</a></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Attribute/addAttr')}">添加属性</a></div>
-
-            <div class ="row"><b style="color:#000;">分类管理</b></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Category/index')}">分类列表</a></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/Category/addCate')}">添加分类</a></div>
-
-            <div class ="row"><b style="color:#000;">系统设置</b></div>
-            <div class ="row"><a href="{:U(GROUP_NAME . '/System/verify')}">验证码设置</a></div>
-        </div>
+            <form class="navbar-form " method="post" action="{:U(GROUP_NAME.'/Attribute/runAddAttr')}">
+                <div class="row">
+                    <label class="col-lg-2 control-label">所属分类：</label>
+                    <select name="cid">
+                        <option value="">===请选择分类===</option>
+                        <foreach name='cate' item='v'>
+                            <option value="{$v.id}">{$v.html}{$v.name}</option>
+                        </foreach>
+                    </select>
+                </div> 
+                <div class="row">
+                    <label class="col-lg-2 control-label">博文属性：</label>
+                        <foreach name='attr' item='v'>
+                            <label class="col-lg-1 control-label"><input type="checkbox" name='aid[]' value='{$v.id}' />&nbsp;{$v.name}
+                            </label>
+                        </foreach>
+                </div>
+                <div class="row">
+                    <label class="col-lg-2 control-label">博文标题：</label>
+                    <input type="text" class="form-control col-lg-8" name='title'  >  
+                </div>
+                <div class="row">
+                    <textarea name = "content" id = "content"></textarea>
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn btn-primary" style="width:80px;">提交</button>
+                </div>
+                
+            </form>
     </div>
 </div>
 
