@@ -6,12 +6,16 @@ Class CategoryAction extends CommonAction {
 	public function index(){
 		$cate = M('cate')->order('sort ASC')->select();
 		//$this->assign('cate', $cate)->display();
-		$this->cate = $cate;
+
+		import('Class.Category', APP_PATH);
+		$this->cate = Category::unlimitedForLevel($cate, '&nbsp;&nbsp;&nbsp;&nbsp;--');
 		$this->display();
 	}
 
 	//添加分类视图
 	public function addCate(){
+		//$pid = isset($_GET['pid']) ? $_GET['pid'] : 0 ;
+		$this->pid = I('pid', 0, 'intval');
 		$this->display();
 	}
 
