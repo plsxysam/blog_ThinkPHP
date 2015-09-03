@@ -14,6 +14,6 @@ return array(
 	'APP_GROUP_PATH' => 'Modules',
 
 	//加载独立配置项文件
-	'LOAD_EXT_CONFIG' => 'verify,water',
+	'LOAD_EXT_CONFIG' => 'verify'
 );
 ?>

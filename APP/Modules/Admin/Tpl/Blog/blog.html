@@ -14,7 +14,7 @@
     <script type="text/javascript" src="__PUBLIC__/js/bootstrapValidator.js"></script>
 
     <script type="text/javascript">
-        window.UEDITOR_HOME_URL = '__ROOT__/Data/Ueditor/';
+        window.UEDITOR_HOME_URL = '__ROOT__/Data/ueditor/';
         window.onload = function(){
         window.UEDITOR_CONFIG.initialFrameWidth = 1000; //编辑器宽
         window.UEDITOR_CONFIG.initialFrameHeight = 400; //编辑器高
@@ -35,8 +35,8 @@
         }
 
     </script>
-    <script type="text/javascript" src="__ROOT__/Data/Ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" src="__ROOT__/Data/Ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/Data/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="__ROOT__/Data/ueditor/ueditor.all.min.js"></script>
 
     <style type="text/css">
         body{
@@ -87,7 +87,7 @@
                 <form class="navbar-form navbar-right" role="form">
                     <a class="btn btn-success" data-toggle="modal" data-target="#myModal">Sign in</a>
                     <a class="btn btn-success" href="#">Register</a>
-                    <a class="btn btn-success" href="{:U(GROUP_NAME . '/Index/Logoutq')}">Logout</a>              
+                    <a class="btn btn-success" href="{:U(GROUP_NAME . '/Index/logout')}">Logout</a>              
                 </form>
             </div>
             

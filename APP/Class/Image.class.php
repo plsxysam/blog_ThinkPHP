@@ -21,8 +21,50 @@
  */
 
 
+/**********验证码配置项**********/
+//验证码长度
+// define('VERIFY_LENGTH', 4);
+// //验证码图片宽度(像素)
+// define('VERIFY_WIDTH', 250);
+// //验证码图片高度(像素)
+// define('VERIFY_HEIGHT', 60);
+// //验证码背影颜色(16进制色值)
+// define('VERIFY_BGCOLOR', '#F3FBFE');
+// //验证码种子
+// define('VERIFY_SEED', '3456789aAbBcCdDeEfFgGhHjJkKmMnNpPqQrRsStTuUvVwWxXyY');
+// //验证码字体文件
+// define('VERIFY_FONTFILE', 'font.ttf');
+// //验证码字体大小
+// define('VERIFY_SIZE', 30);
+// //验证码字体颜色(16进制色值)
+// define('VERIFY_COLOR', '#444444');
+// //SESSION识别名称
+// define('VERIFY_NAME', 'verify');
+// //存储验证码到SESSION时使用函数
+// define('VERIFY_FUNC', 'strtolower');
 
 
+/**********水印配置项**********/
+//水印图路径
+define('WATER_IMAGE', './water.png');
+//水印位置
+define('WATER_POS', 9);
+//水印透明度
+define('WATER_ALPHA', 60);
+//JPEG图片压缩比
+define('WATER_COMPRESSION', 80);
+//水印文字
+define('WATER_TEXT', 'HouDunWang.com');
+//水印文字旋转角色
+define('WATER_ANGLE', 0);
+//水印文字大小
+define('WATER_FONTSIZE', 30);
+//水印文字颜色
+define('WATER_FONTCOLOR', '#670768');
+//水印文字字体文件(写入中文字时需使用支持中文的字体文件)
+define('WATER_FONTFILE', './font.ttf');
+//水印文字字符编码
+define('WATER_CHARSET', 'UTF-8');
 
 
 /**********缩略图配置项**********/
@@ -53,7 +95,7 @@ Class Image {
 		$seed = C('VERIFY_SEED');
 		$fontFile = C('VERIFY_FONTFILE');
 		$size = C('VERIFY_SIZE');
-		$fontColor = C('VERIFY_COLOR');
+		$fontColor = ('VERIFY_COLOR');
 		$name = C('VERIFY_NAME');
 		$fn = C('VERIFY_FUNC');
 
@@ -119,10 +161,10 @@ Class Image {
 		if (!self::checkCondition($img)) return false;
 		
 		//初始化参数(放进框架时把常量换成 读取配置文件项 )
-		$water = empty($water) ? C('WATER_IMAGE') : $water;
-		$pos = C('WATER_POS');
-		$alpha = C('WATER_ALPHA');
-		$compression = C('WATER_COMPRESSION');
+		$water = empty($water) ? WATER_IMAGE : $water;
+		$pos = WATER_POS;
+		$alpha = WATER_ALPHA;
+		$compression = WATER_COMPRESSION;
 
 		if (!file_exists($water)) return false;
 

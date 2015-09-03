@@ -13,7 +13,7 @@ Class IndexAction extends CommonAction{
 	public function logout(){
 		session_unset();
 		session_destroy();
-		$this->redirect(GROUT_NAME . 'Login/index');
+		$this->redirect(GROUP_NAME . '/Login/index1');
 	}
 }
  ?>
