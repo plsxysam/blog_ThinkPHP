@@ -1,0 +1,25 @@
+<php>
+        $cate = M('cate')->order('sort')->select();
+        import('Class.Category', APP_PATH);
+        $cate = Category::unlimitedForLayer($cate);
+</php>
+<div class='top-nav-wrap'>
+        <ul class='nav-lv1'>
+            <li class='nav-lv1-li'>
+                <a href="" class='top-cate'>博客首页</a>
+            </li>
+            <foreach name = 'cate' item='v' >
+                <li class='nav-lv1-li'>
+                    <a href="" class='top-cate'>{$v.name}</a>
+                    <if condition='$v["child"]'>
+                        <ul>
+                            <foreach name = 'v.child' item='val' >
+                                <li><a href="">{$val.name}</a></li>
+                            </foreach>
+                        </ul>
+                    </if>
+                </li>
+            </foreach>
+            
+        </ul>
+    </div>

@@ -1,0 +1,527 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.css"/>
+	<link rel="stylesheet" href="__PUBLIC__/css/bootstrapValidator.min.css"/>
+	 
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+	 
+	<script type="text/javascript" src="__PUBLIC__/js/bootstrapValidator.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/Css/common.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+    <script type="text/JavaScript" src='__PUBLIC__/Js/common.js'></script>
+
+    <style type="text/css">
+        body{
+            padding-top: 50px;
+            padding-bottom: 40px;
+            background-color:  #ccc;
+            /*background:url("__PUBLIC__/pic/125.jpg");*/
+            /*定位背景图像*/
+            background-position:center 0;
+            background-repeat:no-repeat;
+            background-attachment:fixed;
+            /*规定背景图像的尺寸,cover把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。*/
+            background-size:cover;
+            -webkit-background-size:cover;
+            -o-background-size:cover;
+        }
+        @media (min-width: 768px) {
+          .signin{
+            width: 400px !important;
+          }
+        }
+    </style>
+</head>
+<body>
+    <style type="text/css">
+        .col-lg-2 .row{height:55px;
+        background:#D9E0E0;
+        border-right: 1px solid #cccccc;
+        color: #ffffff;
+        text-align: center;
+        line-height: 55px;
+        border-bottom: 1px solid #cccccc;
+        }
+    </style>
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class = "navbar-brand" style="padding:0px 0px;"><img alt="Brand" src="__PUBLIC__/pic/logo2.jpg" style="width:123px;"></a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <div class = "navbar-left">
+                <ul class="nav navbar-nav ">
+                    <li><a href="{:U('../')}">首页</a> </li>
+                    <li><a href="#">公告</a> </li>
+                    <li><a href="#">下载</a> </li>
+                    <li><a href="#">help</a> </li>
+                </ul>
+            </div>
+
+            <div class = "navbar-right">
+                <form class="navbar-form navbar-right" role="form">
+                    <a class="btn btn-success" data-toggle="modal" data-target="#myModal">Sign in</a>
+                    <a class="btn btn-success" href="#">Register</a>
+                    <a class="btn btn-success" href="{:U(GROUP_NAME . '/Index/logout')}">Logout</a>              
+                </form>
+            </div>
+            
+        </div><!--/.navbar-collapse -->
+
+      </div>
+    </nav>
+    <!-- 使用 bootstrap的组件巨幕，让巨幕组件的宽度与浏览器宽度一致并且没有圆角 -->
+    <div class="jumbotron" style="background:url('__PUBLIC__/pic/jumbotron.jpg');background-size:cover;">
+      <div class="container" style="color:#fff;">
+        <h1>Welcome to freescale</h1>
+              <p>...</p>
+              <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+      </div>
+    </div>
+
+ <div class="container">
+
+    <div class='top-nav-wrap'>
+        <ul class='nav-lv1'>
+            <li class='nav-lv1-li'>
+                <a href="" class='top-cate'>博客首页</a>
+            </li>
+            <li class='nav-lv1-li'>
+                <a href="" class='top-cate'>HTML</a>
+            </li>
+            <li class='nav-lv1-li'>
+                <a href="" class='top-cate'>DIV+CSS</a>
+            </li>
+            <li class='nav-lv1-li'>
+                <a href="" class='top-cate'>JavaScript</a>
+                <ul>
+                    <li><a href="">jQuery</a></li>
+                    <li><a href="">Ajax</a></li>
+                </ul>
+            </li>
+            <li class='nav-lv1-li'>
+                <a href="" class='top-cate'>PHP</a>
+                <ul>
+                    <li><a href="">字符串</a></li>
+                    <li><a href="">数组</a></li>
+                    <li><a href="">对象</a></li>
+                </ul>
+            </li>
+            <li class='nav-lv1-li'>
+                <a href="" class='top-cate'>MySQL</a>
+                <ul>
+                    <li><a href="">存储引擎</a></li>
+                    <li><a href="">事务</a></li>
+                    <li><a href="">视图</a></li>
+                    <li><a href="">存储过程</a></li>
+                </ul>
+            </li>
+            <li class='nav-lv1-li'>
+                <a href="" class='top-cate'>Linux</a>
+                <ul>
+                    <li><a href="">基本命令</a></li>
+                    <li><a href="">网络配置</a></li>
+                </ul>
+            </li>
+            <li class='nav-lv1-li'>
+                <a href="" class='top-cate'>其他</a>
+            </li>
+        </ul>
+    </div>
+
+<!--主体-->
+    <div class='main'>
+        <div class='main-left'>
+            <p>后盾博文</p>
+            <dl>
+                <dt>PHP<a href="">更多>></a></dt>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>PHP<a href="">更多>></a></dt>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>PHP<a href="">更多>></a></dt>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>PHP<a href="">更多>></a></dt>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>PHP<a href="">更多>></a></dt>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>PHP<a href="">更多>></a></dt>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>PHP<a href="">更多>></a></dt>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>06/06</span>
+                </dd>
+            </dl>
+        </div>
+    <!--主体右侧-->
+        <div class='main-right'>
+            <dl>
+                <dt>热门博文</dt>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>(1024)</span>
+                </dd>
+
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>(1024)</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>(1024)</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>(1024)</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>(1024)</span>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>最发布发</dt>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>(1024)</span>
+                </dd>
+
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>(1024)</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>(1024)</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>(1024)</span>
+                </dd>
+                <dd>
+                    <a href="">对象的产生与生命周期</a>
+                    <span>(1024)</span>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>友情连接</dt>
+                <dd>
+                    <a href="">后盾网</a>
+                </dd>
+
+                <dd>
+                    <a href="">后盾网论坛</a>
+                </dd>
+                <dd>
+                    <a href="">后盾网学习社区</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+<!--底部-->
+    <div class='bottom'>
+        <div></div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
