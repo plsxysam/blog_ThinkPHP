@@ -1,0 +1,17 @@
+//新建hd_cate分类表
+mysql> create table hd_cate (id int unsigned not null primary key auto_increment, name char(15) not null default ',pid int unsigned not null default 0, sort smallint(6) not null default 100);
+
+//对cate添加
+mysql> alter table hd_cate add index pid(pid);
+
+//新建attr属性表
+mysql> create table hd_attr(id int unsigned not null primary key auto_increment, name char(10) not null default '', color char(10) not null default '');
+
+//新建blog博文表
+mysql> create table hd_blog(id int unsigned not null primary key auto_increment, title varchar(30) not null default '', content text, time int(10) unsigned not null default 0, cid int unsigned not null, del tinyint(1) unsigned not null default 0);
+
+//新建attr属性对文章的表
+mysql> create table hd_blog_attr(bid int unsigned not null, aid int unsigned not null, index bid(bid) ,index aid(aid));
+
+//blog表添加点击次数属性
+mysql> alter table hd_blog add click smallint(6) unsigned not null default 0 after time;
