@@ -34,12 +34,16 @@ Class BlogAction extends CommonAction{
 
 		if($upload->upload('./Uploads/')){
 			$info = $upload->getUploadFileInfo();
+			// import('ORG.Util.Image');
+			// Image::water('./Uploads/' . $info[0]['savename'], './Data/fff.png');
+			import('Class.Image', APP_PATH);
+			Image::water('./Uploads/' . $info[0]['savename'], './Data/fff.png');
+
 			echo json_encode(array(
 				'url' => $info[0]['savename'],
 				'title' => htmlspecialchars($POST['pictitle'], ENT_QUOTES),
 				'original' => $info[0]['name'],
-				'state' => 'SUCCESS',
-				'imageUrlPrefix' =>'./Uploads/'
+				'state' => 'SUCCESS'
 				));
 		} else {
 			echo json_encode(array(

@@ -80,7 +80,7 @@ class Image {
         $posX = $sInfo["width"] - $wInfo["width"];
 
         //生成混合图像
-        imagecopymerge($sImage, $wImage, $posX, $posY, 0, 0, $wInfo['width'], $wInfo['height'], $alpha);
+        imagecopy($sImage, $wImage, $posX, $posY, 0, 0, $wInfo['width'], $wInfo['height']);
 
         //输出图像
         $ImageFun = 'Image' . $sInfo['type'];

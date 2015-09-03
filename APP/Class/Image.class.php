@@ -1,72 +1,51 @@
 <?php
 /**
- * å›¾åƒå¤„ç†ç±»
+ * Í¼Ïñ´¦ÀíÀà
  *
  * @author Carmen <e.carmen.hyc@gmail.com>
  * 
  *
- * ç”ŸæˆéªŒè¯ç ï¼šImage::verify(é•¿åº¦ï¼Œ å®½ï¼Œ é«˜)
+ * Éú³ÉÑéÖ¤Âë£ºImage::verify(³¤¶È£¬ ¿í£¬ ¸ß)
  *
- * åŠ ç›–å›¾ç‰‡æ°´å°ï¼šImage::water(å›¾ç‰‡è·¯å¾„, æ°´å°å›¾è·¯å¾„, ä¿å­˜è·¯å¾„)
+ * ¼Ó¸ÇÍ¼Æ¬Ë®Ó¡£ºImage::water(Í¼Æ¬Â·¾¶, Ë®Ó¡Í¼Â·¾¶, ±£´æÂ·¾¶)
  *
- * åŠ ç›–æ–‡å­—æ°´å°ï¼šImage::text(å›¾ç‰‡è·¯å¾„, æ–‡å­—å†…å®¹, ä¿å­˜è·¯å¾„)
+ * ¼Ó¸ÇÎÄ×ÖË®Ó¡£ºImage::text(Í¼Æ¬Â·¾¶, ÎÄ×ÖÄÚÈİ, ±£´æÂ·¾¶)
  *
- * ç”Ÿæˆç¼©ç•¥å›¾ï¼šImage::thumb(å›¾ç‰‡è·¯å¾„, å®½, é«˜, ä¿å­˜è·¯å¾„)
+ * Éú³ÉËõÂÔÍ¼£ºImage::thumb(Í¼Æ¬Â·¾¶, ¿í, ¸ß, ±£´æÂ·¾¶)
  *
- * ps:ä¿å­˜è·¯å¾„å‚æ•°å‡ä¸ºç•™ç©ºåˆ™æ›¿æ¢åŸå›¾
+ * ps:±£´æÂ·¾¶²ÎÊı¾ùÎªÁô¿ÕÔòÌæ»»Ô­Í¼
  * 
- * ä¸ºäº†å‡å°‘å‚æ•°ï¼Œéƒ¨ä»½é…ç½®é¡¹é‡‡ç”¨å¸¸é‡å®šä¹‰
- * åµŒå…¥æ¡†æ¶æ—¶ï¼Œæ‰¾åˆ°æ¯ä¸ªæ–¹æ³•çš„åˆå§‹å¤„æŠŠå¸¸é‡æ›¿æ¢æˆé…ç½®æ–‡ä»¶é¡¹
- * å¦‚ ThinkPHP å¯é‡‡ç”¨ C() å‡½æ•°ä»£æ›¿å¸¸é‡å®šä¹‰
+ * ÎªÁË¼õÉÙ²ÎÊı£¬²¿·İÅäÖÃÏî²ÉÓÃ³£Á¿¶¨Òå
+ * Ç¶Èë¿ò¼ÜÊ±£¬ÕÒµ½Ã¿¸ö·½·¨µÄ³õÊ¼´¦°Ñ³£Á¿Ìæ»»³ÉÅäÖÃÎÄ¼şÏî
+ * Èç ThinkPHP ¿É²ÉÓÃ C() º¯Êı´úÌæ³£Á¿¶¨Òå
  */
 
 
 
 
-/**********æ°´å°é…ç½®é¡¹**********/
-//æ°´å°å›¾è·¯å¾„
-define('WATER_IMAGE', './water.png');
-//æ°´å°ä½ç½®
-define('WATER_POS', 9);
-//æ°´å°é€æ˜åº¦
-define('WATER_ALPHA', 60);
-//JPEGå›¾ç‰‡å‹ç¼©æ¯”
-define('WATER_COMPRESSION', 80);
-//æ°´å°æ–‡å­—
-define('WATER_TEXT', 'HouDunWang.com');
-//æ°´å°æ–‡å­—æ—‹è½¬è§’è‰²
-define('WATER_ANGLE', 0);
-//æ°´å°æ–‡å­—å¤§å°
-define('WATER_FONTSIZE', 30);
-//æ°´å°æ–‡å­—é¢œè‰²
-define('WATER_FONTCOLOR', '#670768');
-//æ°´å°æ–‡å­—å­—ä½“æ–‡ä»¶(å†™å…¥ä¸­æ–‡å­—æ—¶éœ€ä½¿ç”¨æ”¯æŒä¸­æ–‡çš„å­—ä½“æ–‡ä»¶)
-define('WATER_FONTFILE', './font.ttf');
-//æ°´å°æ–‡å­—å­—ç¬¦ç¼–ç 
-define('WATER_CHARSET', 'UTF-8');
 
 
-/**********ç¼©ç•¥å›¾é…ç½®é¡¹**********/
-//ç¼©ç•¥å›¾å®½åº¦
+/**********ËõÂÔÍ¼ÅäÖÃÏî**********/
+//ËõÂÔÍ¼¿í¶È
 define('THUMB_WIDTH', 200);
-//ç¼©ç•¥å›¾é«˜åº¦
+//ËõÂÔÍ¼¸ß¶È
 define('THUMB_HEIGHT', 120);
 
 Class Image {
 
 	/**
-	 * ç”ŸæˆéªŒè¯ç 
-	 * @param  [Integer] $length [éªŒè¯ç é•¿åº¦]
-	 * @param  [Integer] $width  [éªŒè¯ç å®½åº¦]
-	 * @param  [Integer] $height [éªŒè¯ç é«˜åº¦]
+	 * Éú³ÉÑéÖ¤Âë
+	 * @param  [Integer] $length [ÑéÖ¤Âë³¤¶È]
+	 * @param  [Integer] $width  [ÑéÖ¤Âë¿í¶È]
+	 * @param  [Integer] $height [ÑéÖ¤Âë¸ß¶È]
 	 * @return [boolean]
 	 */
 	Static Public function verify ($length = NULL, $width = NULL, $height = NULL) {
 
-		//ç¯å¢ƒæ£€æµ‹
+		//»·¾³¼ì²â
 		if (!self::checkCondition()) return false;
 
-		//åˆå§‹åŒ–å‚æ•°(æ”¾è¿›æ¡†æ¶æ—¶æŠŠå¸¸é‡æ¢æˆ è¯»å–é…ç½®æ–‡ä»¶é¡¹ )
+		//³õÊ¼»¯²ÎÊı(·Å½ø¿ò¼ÜÊ±°Ñ³£Á¿»»³É ¶ÁÈ¡ÅäÖÃÎÄ¼şÏî )
 		$length = empty($length) ? C('VERIFY_LENGTH') : $length;
 		$width = empty($width) ? C('VERIFY_WIDTH') : $width;
 		$height= empty($height) ? C('VERIFY_HEIGHT') : $height;
@@ -78,15 +57,15 @@ Class Image {
 		$name = C('VERIFY_NAME');
 		$fn = C('VERIFY_FUNC');
 
-		//åˆ›å»ºç”»å¸ƒå›¾åƒ
+		//´´½¨»­²¼Í¼Ïñ
 		$verify = imagecreatetruecolor($width, $height);
 
-		//ç”»å¸ƒèƒŒæ™¯è‰²
+		//»­²¼±³¾°É«
 		$rgb = self::colorTrans($bgColor);
 		$color = imagecolorallocate($verify, $rgb['red'], $rgb['green'], $rgb['blue']);
 		imagefill($verify, 0, 0, $color);
 
-		//å†™å…¥èƒŒæ™¯å¹²æ‰°å­—ä½“
+		//Ğ´Èë±³¾°¸ÉÈÅ×ÖÌå
 		$len = strlen($seed) - 1;
 		for ($i = 0; $i < 20; $i++) {
 			$color = imagecolorallocate($verify, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));
@@ -97,7 +76,7 @@ Class Image {
 		$fontColor = imagecolorallocate($verify, $rgb['red'], $rgb['green'], $rgb['blue']);
 
 
-		//å†™å…¥éªŒè¯ç 
+		//Ğ´ÈëÑéÖ¤Âë
 		$code = '';
 		$left = ($width - $size * $length) / 2;
 		$y = $height - ($height - $size) / 2;
@@ -109,7 +88,7 @@ Class Image {
 		}
 		$_SESSION[$name] = $fn($code);
 
-		//å¹²æ‰°çº¿
+		//¸ÉÈÅÏß
 		for ($i = 0, $h = $height / 2 - 2; $i < 5; $i++, $h++) {
 			$color = imagecolorallocate($verify, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));
 			$cx = mt_rand(-10, $width + 10);
@@ -122,7 +101,7 @@ Class Image {
 			imageline($verify, 0, $h, $width, $h, $fontColor);
 		}
 
-		//è¾“å…¥å›¾åƒ
+		//ÊäÈëÍ¼Ïñ
 		header('Content-type:image/png');
 		imagepng($verify);
 		imagedestroy($verify);
@@ -130,59 +109,59 @@ Class Image {
 	}
 
 	/**
-	 * åŠ ç›–å›¾ç‰‡æ°´å°
-	 * @param  [String] $img   [å›¾ç‰‡è·¯å¾„]
-	 * @param  [String] $water [æ°´å°å›¾è·¯å¾„]
-	 * @param  [String] $save  [ä¿å­˜è·¯å¾„|ç•™ç©ºåˆ™æ›¿æ¢åŸå›¾]
+	 * ¼Ó¸ÇÍ¼Æ¬Ë®Ó¡
+	 * @param  [String] $img   [Í¼Æ¬Â·¾¶]
+	 * @param  [String] $water [Ë®Ó¡Í¼Â·¾¶]
+	 * @param  [String] $save  [±£´æÂ·¾¶|Áô¿ÕÔòÌæ»»Ô­Í¼]
 	 * @return [Boolean]
 	 */
 	Static Public function water ($img, $water = '', $save = NULL) {
 		if (!self::checkCondition($img)) return false;
 		
-		//åˆå§‹åŒ–å‚æ•°(æ”¾è¿›æ¡†æ¶æ—¶æŠŠå¸¸é‡æ¢æˆ è¯»å–é…ç½®æ–‡ä»¶é¡¹ )
-		$water = empty($water) ? WATER_IMAGE : $water;
-		$pos = WATER_POS;
-		$alpha = WATER_ALPHA;
-		$compression = WATER_COMPRESSION;
+		//³õÊ¼»¯²ÎÊı(·Å½ø¿ò¼ÜÊ±°Ñ³£Á¿»»³É ¶ÁÈ¡ÅäÖÃÎÄ¼şÏî )
+		$water = empty($water) ? C('WATER_IMAGE') : $water;
+		$pos = C('WATER_POS');
+		$alpha = C('WATER_ALPHA');
+		$compression = C('WATER_COMPRESSION');
 
 		if (!file_exists($water)) return false;
 
-		//åŸå›¾å®½ã€é«˜ä¸ç±»å‹
+		//Ô­Í¼¿í¡¢¸ßÓëÀàĞÍ
 		$imgInfo = getimagesize($img);
 		$imgW = $imgInfo[0];
 		$imgH = $imgInfo[1];
 		$imgT = self::getImageType($imgInfo[2]);
 
-		//æ°´å°å›¾å®½ã€é«˜ä¸ç±»å‹
+		//Ë®Ó¡Í¼¿í¡¢¸ßÓëÀàĞÍ
 		$waterInfo = getimagesize($water);
 		$waterW = $waterInfo[0];
 		$waterH = $waterInfo[1];
 		$waterT = self::getImageType($waterInfo[2]);
 
-		//æ°´å°å›¾å¤§äºåŸå›¾æ—¶ä¸ä½œå¤„ç†
+		//Ë®Ó¡Í¼´óÓÚÔ­Í¼Ê±²»×÷´¦Àí
 		if ($imgW < $waterW || $imgH < $waterH) return false;
 
-		//è®¡ç®—æ°´å°ä½ç½®
+		//¼ÆËãË®Ó¡Î»ÖÃ
 		$pos = self::getPosition($imgW, $imgH, $waterW, $waterH, $pos);
 		$x = $pos['x'];
 		$y = $pos['y'];
 
-		//æ‰“å¼€åŸå›¾èµ„æº
+		//´ò¿ªÔ­Í¼×ÊÔ´
 		$fn = 'imagecreatefrom' . $imgT;
 		$image = $fn($img);
 
-		//æ‰“å¼€æ°´å°å›¾èµ„æº
+		//´ò¿ªË®Ó¡Í¼×ÊÔ´
 		$fn = 'imagecreatefrom' . $waterT;
 		$water = $fn($water);
 
-		//ç›–ä¸Šæ°´å°å›¾
+		//¸ÇÉÏË®Ó¡Í¼
 		if ($waterT == 'png') {
 			imagecopy($image, $water, $x, $y, 0, 0, $waterW, $waterH);
 		} else {
 			imagecopymerge($image, $water, $x, $y, 0, 0, $waterW, $waterH, $alpha);
 		}
 
-		//ä¿å­˜è·¯å¾„
+		//±£´æÂ·¾¶
 		$save = self::savePath($save, $img);
 		$fn = 'image' . $imgT;
 		if ($imgT == 'jpeg') {
@@ -191,23 +170,23 @@ Class Image {
 			$fn($image, $save);
 		}
 
-		//é‡Šæ”¾èµ„æº
+		//ÊÍ·Å×ÊÔ´
 		imagedestroy($image);
 		imagedestroy($water);
 		return true;
 	}
 
 	/**
-	 * åŠ ç›–æ–‡å­—æ°´å°
-	 * @param  [String] $img  [å›¾ç‰‡è·¯å¾„]
-	 * @param  [String] $text [æ–‡å­—å†…å®¹]
-	 * @param  [String] $save [ä¿å­˜è·¯å¾„|ç•™ç©ºåˆ™æ›¿æ¢åŸå›¾]
+	 * ¼Ó¸ÇÎÄ×ÖË®Ó¡
+	 * @param  [String] $img  [Í¼Æ¬Â·¾¶]
+	 * @param  [String] $text [ÎÄ×ÖÄÚÈİ]
+	 * @param  [String] $save [±£´æÂ·¾¶|Áô¿ÕÔòÌæ»»Ô­Í¼]
 	 * @return [Boolean]
 	 */
 	Static Public function text ($img, $text = '', $save = NULL) {
 		if (!self::checkCondition($img)) return false;
 
-		//åˆå§‹åŒ–å‚æ•°(æ”¾è¿›æ¡†æ¶æ—¶æŠŠå¸¸é‡æ¢æˆ è¯»å–é…ç½®æ–‡ä»¶é¡¹ )
+		//³õÊ¼»¯²ÎÊı(·Å½ø¿ò¼ÜÊ±°Ñ³£Á¿»»³É ¶ÁÈ¡ÅäÖÃÎÄ¼şÏî )
 		$text = empty($text) ? WATER_TEXT : $text;
 		$pos = WATER_POS;
 		$angle = WATER_ANGLE;
@@ -217,33 +196,33 @@ Class Image {
 		$charset = WATER_CHARSET;
 		$compression = WATER_COMPRESSION;
 
-		//æ–‡å­—æ°´å°å®½ã€é«˜
+		//ÎÄ×ÖË®Ó¡¿í¡¢¸ß
 		$waterInfo = imagettfbbox($fontSize, $angle, $fontFile, $text);
 		$waterW = $waterInfo[2] - $waterInfo[0];
 		$waterH = $waterInfo[1] - $waterInfo[7];
 
-		//åŸå›¾å®½ã€é«˜ã€ç±»å‹
+		//Ô­Í¼¿í¡¢¸ß¡¢ÀàĞÍ
 		$imgInfo = getimagesize($img);
 		$imgW = $imgInfo[0];
 		$imgH = $imgInfo[1];
 		$type = self::getImageType($imgInfo[2]);
 
-		//è®¡ç®—æ°´å°ä½ç½®
+		//¼ÆËãË®Ó¡Î»ÖÃ
 		$pos = self::getPosition($imgW, $imgH, $waterW, $waterH, $pos);
 		$x = $pos['x'];
 		$y = $pos['y'] + $fontSize / 2;
 
-		//æ‰“å¼€åŸå›¾èµ„æº
+		//´ò¿ªÔ­Í¼×ÊÔ´
 		$fn = 'imagecreatefrom' . $type;
 		$image = $fn($img);
 
-		//å†™å…¥æ°´å°æ–‡å­—
+		//Ğ´ÈëË®Ó¡ÎÄ×Ö
 		$rgb = self::colorTrans($fontColor);
 		$color = imagecolorallocate($image, $rgb['red'], $rgb['green'], $rgb['blue']);
 		$text = iconv($charset, 'UTF-8', $text);
 		imagettftext($image, $fontSize, $angle, $x, $y, $color, $fontFile, $text);
 
-		//ä¿å­˜è·¯å¾„
+		//±£´æÂ·¾¶
 		$save = self::savePath($save, $img);
 		$fn = 'image' . $type;
 		if ($type == 'jpeg') {
@@ -252,77 +231,77 @@ Class Image {
 			$fn($image, $save);
 		}
 
-		//é‡Šæ”¾èµ„æº
+		//ÊÍ·Å×ÊÔ´
 		imagedestroy($image);
 		return true;
 
 	}
 
 	/**
-	 * ç”Ÿæˆç¼©ç•¥å›¾(ç­‰æ¯”ä¾‹ç¼©æ”¾)
-	 * @param  [String] $img    [å›¾ç‰‡è·¯å¾„]
-	 * @param  [String] $width  [ç¼©ç•¥å®½åº¦]
-	 * @param  [String] $height [ç¼©ç•¥é«˜åº¦]
-	 * @param  [String] $save   [ä¿å­˜è·¯å¾„|ç•™ç©ºåˆ™æ›¿æ¢åŸå›¾]
+	 * Éú³ÉËõÂÔÍ¼(µÈ±ÈÀıËõ·Å)
+	 * @param  [String] $img    [Í¼Æ¬Â·¾¶]
+	 * @param  [String] $width  [ËõÂÔ¿í¶È]
+	 * @param  [String] $height [ËõÂÔ¸ß¶È]
+	 * @param  [String] $save   [±£´æÂ·¾¶|Áô¿ÕÔòÌæ»»Ô­Í¼]
 	 * @return [Boolean]
 	 */
 	Static Public function thumb ($img, $width = '', $height = '', $save = NULL) {
 		if (!self::checkCondition($img)) return false;
 
-		//åˆå§‹åŒ–å‚æ•°(æ”¾è¿›æ¡†æ¶æ—¶æŠŠå¸¸é‡æ¢æˆ è¯»å–é…ç½®æ–‡ä»¶é¡¹ )
+		//³õÊ¼»¯²ÎÊı(·Å½ø¿ò¼ÜÊ±°Ñ³£Á¿»»³É ¶ÁÈ¡ÅäÖÃÎÄ¼şÏî )
 		$width = empty($width) ? THUMB_WIDTH : $width;
 		$height = empty($height) ? THUMB_HEIGHT : $height;
 
-		//åŸå›¾å®½ã€é«˜ã€ç±»å‹
+		//Ô­Í¼¿í¡¢¸ß¡¢ÀàĞÍ
 		$imgInfo = getimagesize($img);
 		$imgW = $imgInfo[0];
 		$imgH = $imgInfo[1];
 		$type = self::getImageType($imgInfo[2]);
 
-		//ç¼©æ”¾æ¯”
+		//Ëõ·Å±È
 		$ratio = max($width / $imgW, $height / $imgH);
-		//ç¼©ç•¥å›¾å¤§äºåŸå›¾ä¸ä½œå¤„ç†
+		//ËõÂÔÍ¼´óÓÚÔ­Í¼²»×÷´¦Àí
 		if ($ratio >= 1) return false;
 
-		//ç­‰æ¯”ä¾‹ç¼©æ”¾åå®½ã€é«˜
+		//µÈ±ÈÀıËõ·Åºó¿í¡¢¸ß
 		$width = floor($imgW * $ratio);
 		$height = floor($imgH * $ratio);
 
-		//åˆ›å»ºç¼©ç•¥å›¾ç”»å¸ƒ
+		//´´½¨ËõÂÔÍ¼»­²¼
 		if ($type == 'gif') {
 			$thumb = imagecreate($width, $height);
 			$color = imagecolorallocate($thumb, 0, 255, 0);
 		} else {
 			$thumb = imagecreatetruecolor($width, $height);
-			//PNGå›¾ç‰‡é€æ˜å¤„ç†
+			//PNGÍ¼Æ¬Í¸Ã÷´¦Àí
 			if ($type == 'png') {
-				//å…³é—­æ··è‰²æ¨¡å¼
+				//¹Ø±Õ»ìÉ«Ä£Ê½
 				imagealphablending($thumb, false);
-				//ä¿å­˜é€æ˜é€šé“
+				//±£´æÍ¸Ã÷Í¨µÀ
 				imagesavealpha($thumb, true);
 			}
 		}
 
-		//æ‰“å¼€åŸå›¾èµ„æº
+		//´ò¿ªÔ­Í¼×ÊÔ´
 		$fn = 'imagecreatefrom' . $type;
 		$image = $fn($img);
 
-		//åŸå›¾ç§»è‡³ç¼©ç•¥å›¾ç”»å¸ƒå¹¶è°ƒæ•´å¤§å°
+		//Ô­Í¼ÒÆÖÁËõÂÔÍ¼»­²¼²¢µ÷Õû´óĞ¡
 		if (function_exists('imagecopyresampled')) {
 			imagecopyresampled($thumb, $image, 0, 0, 0, 0, $width, $height, $imgW, $imgH);
 		} else {
 			imagecopyresized($thumb, $image, 0, 0, 0, 0, $width, $height, $imgW, $imgH);
 		}
 
-		//GIFå›¾é€æ˜å¤„ç†
+		//GIFÍ¼Í¸Ã÷´¦Àí
 		if ($type == 'gif') imagecolortransparent($thumb, $color);
 
-		//ä¿å­˜è·¯å¾„
+		//±£´æÂ·¾¶
 		$save = self::savePath($save, $img);
 		$fn = 'image' . $type;
 		$fn($thumb, $save);
 
-		//é‡Šæ”¾èµ„æº
+		//ÊÍ·Å×ÊÔ´
 		imagedestroy($image);
 		imagedestroy($thumb);
 		return true;
@@ -330,9 +309,9 @@ Class Image {
 	}
 
 	/**
-	 * å›¾ç‰‡ä¿å­˜è·¯å¾„
-	 * @param  [String] $save [ä¿å­˜è·¯å¾„]
-	 * @param  [String] $img  [åŸå›¾è·¯å¾„]
+	 * Í¼Æ¬±£´æÂ·¾¶
+	 * @param  [String] $save [±£´æÂ·¾¶]
+	 * @param  [String] $img  [Ô­Í¼Â·¾¶]
 	 * @return [String]
 	 */
 	Static Private function savePath ($save, $img) {
@@ -345,12 +324,12 @@ Class Image {
 	}
 
 	/**
-	 * è®¡ç®—æ°´å°å›¾ä½ç½®
-	 * @param  [Integer] $IW  [åŸå›¾å®½]
-	 * @param  [Integer] $IH  [åŸå›¾é«˜]
-	 * @param  [Integer] $WW  [æ°´å°å®½]
-	 * @param  [Integer] $WH  [æ°´å°é«˜]
-	 * @param  [Integer] $pos [ä¹å®«æ ¼ä½ç½®]
+	 * ¼ÆËãË®Ó¡Í¼Î»ÖÃ
+	 * @param  [Integer] $IW  [Ô­Í¼¿í]
+	 * @param  [Integer] $IH  [Ô­Í¼¸ß]
+	 * @param  [Integer] $WW  [Ë®Ó¡¿í]
+	 * @param  [Integer] $WH  [Ë®Ó¡¸ß]
+	 * @param  [Integer] $pos [¾Å¹¬¸ñÎ»ÖÃ]
 	 * @return [Array]      [x, y]
 	 */
 	Static Private function getPosition ($IW, $IH, $WW, $WH, $pos) {
@@ -405,8 +384,8 @@ Class Image {
 	}
 
 	/**
-	 * å›¾ç‰‡ç±»å‹
-	 * @param  [Integer] $typeNum [ç±»å‹è¯†åˆ«å·]
+	 * Í¼Æ¬ÀàĞÍ
+	 * @param  [Integer] $typeNum [ÀàĞÍÊ¶±ğºÅ]
 	 * @return [String]
 	 */
 	Static Private function getImageType ($typeNum) {
@@ -421,8 +400,8 @@ Class Image {
 	}
 
 	/**
-	 * 16è¿›åˆ¶è‰²å€¼è½¬æ¢ä¸ºRGB
-	 * @param  [Sting] $color [16è¿›åˆ¶è‰²å€¼]
+	 * 16½øÖÆÉ«Öµ×ª»»ÎªRGB
+	 * @param  [Sting] $color [16½øÖÆÉ«Öµ]
 	 * @return [Array]        [red, green, blue]
 	 */
 	Static Private function colorTrans($color) {
@@ -435,7 +414,7 @@ Class Image {
 	}
 
 	/**
-	 * å›¾åƒå¤„ç†ç¯å¢ƒæ£€æµ‹
+	 * Í¼Ïñ´¦Àí»·¾³¼ì²â
 	 * @return boolean
 	 */
 	Static Private function checkCondition ($file = NULL) {
