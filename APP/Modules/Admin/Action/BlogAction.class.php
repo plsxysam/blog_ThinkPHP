@@ -4,7 +4,13 @@ Class BlogAction extends CommonAction{
 
 	//博文列表
 	Public function index(){
-
+		//用于控制读取主表中的字段,在调用时field($field)是读取其中的字段,field($field,true)是读取除$field以外的字段
+		$field = array('id', 'title', 'content', 'time', 'click');
+		$where = array('del' => 0);
+		//如果只想关联其中的某一个，将relation中true修改为对应的名字，->where($where)->field($field)
+		$this->blog = D('BlogRelation')->relation(true)->select();
+		 // p($blog);die();
+		$this->display();
 	}
 
 	//添加博文
@@ -21,7 +27,6 @@ Class BlogAction extends CommonAction{
 
 	//添加博文表单处理
 	Public function addBlog () {
-		p($_POST);
 		//不安全了可以用I方法
 		$data = array(
 			'title' => I('title'),

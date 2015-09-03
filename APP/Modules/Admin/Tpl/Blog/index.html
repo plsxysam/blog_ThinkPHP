@@ -92,26 +92,31 @@
 
  <div class="container">
 
-    <form action="{:U(GROUP_NAME . '/Category/sortCate')}" method="post">
-        <div class ="row" style="font-size:20px;"> 
-        <!--列-->
-            <div class="col-lg-2">ID</div>
-            <div class="col-lg-3">属性名称</div>
-            <div class="col-lg-2">标题颜色</div>
-            <div class="col-lg-3">操作</div>
-        </div>
-        <foreach name = 'attr' item = 'v'>
-            <div class = "row">
-                <div class="col-lg-2">{$v.id}</div>
-                <div class="col-lg-3">{$v.name}</div>
-                <div class="col-lg-2"><div style ='width:50px;height:20px;background:{$v.color};'></div></div>
-                <div class="col-lg-3">[<a href="">修改</a>][<a href="">删除</a>]</div> 
+    <div class = "row">
+        <div class = "col-lg-10">
+            <div class="row"><h1>博文列表</h1></div>
+            <div class ="row" style="font-size:20px;height:40px;">
+                <div class="col-lg-1"><h4>ID</h4></div>
+                <div class="col-lg-3"><h4>标题</h4></div>
+                <div class="col-lg-2"><h4>所属分类</h4></div>
+                <div class="col-lg-2"><h4>点击次数</h4></div>
+                <div class="col-lg-2"><h4>发布时间</h4></div>
+                <div class="col-lg-2"><h4>操作</h4></div>
             </div>
-        </foreach>
-        <div class="row">
+            <foreach name='blog' item='v'>
+                <div class ="row" style="height:40px;">
+                    <div class="col-lg-1">{$v.id}</div>
+                    <div class="col-lg-3">{$v.title}<foreach name='v.attr' item='i'>[<a style="color:{$i.color};">{$i.name}]</a></foreach></div>
+                    <div class="col-lg-2">{$v.cate}</div>
+                    <div class="col-lg-2">{$v.click}</div>
+                    <div class="col-lg-2">{$v.time|date='y-m-d H:i',###}</div>
+                    <div class="col-lg-2">[修改][删除]</div>
+                </div>
+            </foreach>
 
-            <button type="submit" class="btn btn-primary" style="width:80px;">提交</button>
         </div>
-    </form>
+        <div class = "col-lg-2"></div>
+
+    </div>
 </body>
 </html>
