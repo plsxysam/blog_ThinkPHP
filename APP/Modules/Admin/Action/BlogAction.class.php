@@ -4,13 +4,42 @@ Class BlogAction extends CommonAction{
 
 	//博文列表
 	Public function index(){
-		//用于控制读取主表中的字段,在调用时field($field)是读取其中的字段,field($field,true)是读取除$field以外的字段
-		$field = array('id', 'title', 'content', 'time', 'click');
-		$where = array('del' => 0);
-		//如果只想关联其中的某一个，将relation中true修改为对应的名字，->where($where)->field($field)
-		$this->blog = D('BlogRelation')->relation(true)->select();
-		 // p($blog);die();
+		$this->blog = D('BlogRelation')->getBlogs();
 		$this->display();
+	}
+
+	//删除到回收站/还原
+	Public function toTrach(){
+		$type = (int) $_GET['type'];
+		$msg = $type ? '删除' : '还原';
+		$update = array(
+			'id' =>(int) $_GET['id'],
+			'del' => $type
+			);
+		//M('blog')->where(array('id' = > $_GET['id']))->setField('del', 1)
+		if(M('blog')->save($update)){
+			$this->success($msg . '成功', U(GROUP_NAME . '/Blog/index'));
+		} else {
+			$this->error($msg . '失败');
+		}
+	}
+
+	//回收站
+	Public function trach(){
+		$this->blog = D('BlogRelation')->getBlogs(1);
+		$this->display('index');
+	}
+
+	//彻底删除
+	Public function delete(){
+		$id = (int) $_GET['id'];
+		//D('BlogRelation')->relation('attr')->delete($id);
+		if(M('blog')->delete($id)){
+			M('blog_attr')->where(array('bid' => $id))->delete();
+			$this->success('删除成功', U(GROUP_NAME . '/Blog/trach'));
+		} else {
+			$this->error('删除失败');
+		}
 	}
 
 	//添加博文
