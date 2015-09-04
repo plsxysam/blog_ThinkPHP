@@ -13,7 +13,7 @@ Class BlogViewModel extends ViewModel{
 		);
 
 	Public function getAll ($where, $limit) {
-		return $this->where($where)->limit($limit)->select();
+		return $this->where($where)->limit($limit)->order('time DESC')->select();
 	}
 }
  ?>

@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="__PUBLIC__/Css/common.css" />
     <link rel="stylesheet" href="__PUBLIC__/Css/show.css" />
     <script type="text/JavaScript" src='__PUBLIC__/Js/common.js'></script>
-
+    <link rel="stylesheet" type="text/css" href="__ROOT__/Data/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css">
+    <script type="text/javascript" src="__ROOT__/Data/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
+    <script type="text/javascript">
+        SyntaxHighlighter.all();
+    </script>
     <style type="text/css">
         body{
             padding-top: 50px;
@@ -144,59 +148,26 @@
     </div>
 
 <!--主体-->
-    <div class='main'>
+    <div class='main'> 
+
         <div class='main-left'>
             <div class='location'>
                 <a href="">首页</a>>
-                <a href="">PHP</a>>
-                <a href="">对象</a>
+                <php> $last = count($parent) - 1;</php>
+                <foreach name = 'parent' item='v'>
+                    <a href="">{$v.name}</a>
+                    <if condition ='$key neq $last'>></if>
+                </foreach>
             </div>
             <div class="title">
-                {:W('Hot',array('id' => 100))}
-                <p>对象的产生与生命周期</p>
+               
+                <p>{$blog.title}</p>
                 <div>
-                    <span class='fl'>发布于：2013年12月12日</span>
-                    <span class='fr'>已被阅读1024次</span>
+                    <span class='fl'>发布于：{$blog.time|date="Y年m月d日"}</span>
+                    <span class='fr'>已被阅读{$blog.click}次</span>
                 </div>
             </div>
-            <div class='content'>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-                这里是正文<br/>
-            </div>
+            <div class='content' style ="word-break:break-all">{$blog.content}</div>
         </div>
     <!--主体右侧-->
         <div class='main-right'>
@@ -207,22 +178,6 @@
                     <span>(1024)</span>
                 </dd>
 
-                <dd>
-                    <a href="">对象的产生与生命周期</a>
-                    <span>(1024)</span>
-                </dd>
-                <dd>
-                    <a href="">对象的产生与生命周期</a>
-                    <span>(1024)</span>
-                </dd>
-                <dd>
-                    <a href="">对象的产生与生命周期</a>
-                    <span>(1024)</span>
-                </dd>
-                <dd>
-                    <a href="">对象的产生与生命周期</a>
-                    <span>(1024)</span>
-                </dd>
             </dl>
 
             <dl>
@@ -232,18 +187,6 @@
                     <span>(1024)</span>
                 </dd>
 
-                <dd>
-                    <a href="">对象的产生与生命周期</a>
-                    <span>(1024)</span>
-                </dd>
-                <dd>
-                    <a href="">对象的产生与生命周期</a>
-                    <span>(1024)</span>
-                </dd>
-                <dd>
-                    <a href="">对象的产生与生命周期</a>
-                    <span>(1024)</span>
-                </dd>
                 <dd>
                     <a href="">对象的产生与生命周期</a>
                     <span>(1024)</span>

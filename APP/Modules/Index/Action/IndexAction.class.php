@@ -16,10 +16,10 @@ Class IndexAction extends Action {
 				$cids = Category::getChildsId($cate, $v['id']);
 				$cids[] = $v['id'];
 				$where = array('cid' => array('IN', $cids));
-				$list[$k]['blog'] = $db->field(array('id','title','time'))->where($where)->select();
+				$list[$k]['blog'] = $db->field(array('id','title','time'))->where($where)->order('time DESC')->select();
 			}
 			//缓存名称  缓存数据 缓存时间10s
-			S('index_list', $list, 3600 * 24);
+			S('index_list', $list, 10 );
 		}
 		
 		
