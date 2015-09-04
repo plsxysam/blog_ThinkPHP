@@ -15,3 +15,6 @@ mysql> create table hd_blog_attr(bid int unsigned not null, aid int unsigned not
 
 //blog表添加点击次数属性
 mysql> alter table hd_blog add click smallint(6) unsigned not null default 0 after time;
+
+//blog表添加简要
+mysql> alter table hd_blog add summary varchar(255) not null default '' after content;

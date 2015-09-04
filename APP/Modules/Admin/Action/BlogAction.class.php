@@ -60,6 +60,7 @@ Class BlogAction extends CommonAction{
 		$data = array(
 			'title' => I('title'),
 			'content' => $_POST['content'],
+			'summary' => $_POST['summary'],
 			'time' => time(),
 			'click' => (int) $_POST['click'],
 			'cid' => (int) $_POST['cid']
