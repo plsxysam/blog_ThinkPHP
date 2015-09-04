@@ -7,5 +7,6 @@ return array(
 
 	//verify时去掉伪静态后缀名，是的看不清的js正常刷新
 	'URL_HTML_SUFFIX' => '',
+	'SHOW_PAGE_TRACE' =>true,
 	);
  ?>
